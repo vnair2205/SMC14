@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
+import api from '../services/api';
 import PlanSelection from '../components/signup/PlanSelection';
 import RegistrationForm from '../components/signup/RegistrationForm';
 import Preloader from '../components/common/Preloader';
@@ -60,7 +60,7 @@ const SignupPage = () => {
 
             if (planId) {
                 try {
-                    const { data } = await axios.get(`http://localhost:5000/api/subscriptions/plans/${planId}`);
+                    const { data } = await api.get(`/subscriptions/plans/${planId}`);
                     if (data) {
                         handlePlanSelect(data);
                     } else {
@@ -81,7 +81,7 @@ const SignupPage = () => {
 
         const fetchAllPublicPlans = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/subscriptions/public');
+                const res = await api.get('/subscriptions/public');
                 setPlans(res.data);
             } catch (err) {
                 console.error("Failed to fetch plans", err);

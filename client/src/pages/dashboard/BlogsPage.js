@@ -194,7 +194,7 @@ const BlogsPage = () => {
                     <BlogGrid>
                         {blogs.length > 0 ? blogs.map(blog => (
                             <BlogCard key={blog._id}>
-                                <CardThumbnail src={`http://localhost:5000/${blog.thumbnail}`} alt={blog.title} />
+                                <CardThumbnail src={`${process.env.REACT_APP_BASE_URL}/${blog.thumbnail}`} alt={blog.title} />
                                 <CardContent>
                                     <CardDate>{format(new Date(blog.blogDate), 'MMMM d, yyyy')}</CardDate>
                                     <CardTitle>{blog.title}</CardTitle>

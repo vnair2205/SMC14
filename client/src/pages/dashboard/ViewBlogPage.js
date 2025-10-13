@@ -126,7 +126,7 @@ const ViewBlogPage = () => {
                     ></iframe>
                 </VideoContainer>
             ) : (
-                <Thumbnail src={`http://localhost:5000/${blog.thumbnail}`} alt={blog.title} />
+                <Thumbnail src={`${process.env.REACT_APP_BASE_URL}/${blog.thumbnail}`} alt={blog.title} />
             )}
 
             <Content dangerouslySetInnerHTML={{ __html: blog.content }} />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+import api from '../../services/api';
 import { useTranslation } from 'react-i18next';
 import { io } from 'socket.io-client';
 import { format } from 'date-fns';
@@ -261,7 +261,7 @@ const RemoveUserButton = styled.button`
 `;
 
 // --- Main Component Logic ---
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = process.env.REACT_APP_BASE_URL;
 let socket;
 
 const MyStudyGroupsPage = () => {
@@ -290,7 +290,7 @@ const MyStudyGroupsPage = () => {
         try {
             const token = localStorage.getItem('token');
             const config = { headers: { 'x-auth-token': token } };
-            const { data } = await axios.get('/api/studygroup', config);
+            const { data } = await api.get('/studygroup', config);
             setChats(data);
         } catch (error) {
             console.error("Failed to fetch chats");
@@ -302,7 +302,7 @@ const MyStudyGroupsPage = () => {
             const token = localStorage.getItem('token');
             if (!token) return;
             const config = { headers: { 'x-auth-token': token } };
-            const { data } = await axios.get('/api/dashboard', config);
+            const { data } = await api.get('/dashboard', config);
             setUser(data.user);
 
             socket = io(ENDPOINT);
@@ -338,7 +338,7 @@ const MyStudyGroupsPage = () => {
             setLoadingMessages(true);
             const token = localStorage.getItem('token');
             const config = { headers: { "x-auth-token": token } };
-            const { data } = await axios.get(`/api/message/${chat._id}`, config);
+            const { data } = await api.get(`/message/${chat._id}`, config);
             setMessages(data);
         } catch (error) {
             console.error("Failed to fetch messages for chat");
@@ -369,7 +369,7 @@ const MyStudyGroupsPage = () => {
             setLoadingSearch(true);
             const token = localStorage.getItem('token');
             const config = { headers: { 'x-auth-token': token } };
-            const { data } = await axios.get(`/api/studygroup/users?search=${query}`, config);
+            const { data } = await api.get(`/studygroup/users?search=${query}`, config);
             setSearchResults(data);
         } catch (error) {
             console.error("Failed to search users");
@@ -399,7 +399,7 @@ const MyStudyGroupsPage = () => {
         try {
             const token = localStorage.getItem('token');
             const config = { headers: { 'x-auth-token': token } };
-            const { data } = await axios.post('/api/studygroup/group', {
+            const { data } = await api.post('/studygroup/group', {
                 name: groupName,
                 description: groupDescription,
                 users: JSON.stringify(selectedUsers.map(u => u._id)),

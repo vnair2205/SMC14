@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate, useOutletContext } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
+import api from '../../services/api';
 import DOMPurify from 'dompurify';
 import Preloader from '../../components/common/Preloader';
 import { Modal, ModalText, ModalButtonContainer, ModalButton } from '../../components/common/Modal';
@@ -216,7 +216,7 @@ const LessonContentPage = () => {
                 const config = { headers: { 'Content-Type': 'application/json', 'x-auth-token': token }};
                 const body = JSON.stringify({ courseId, subtopicId, lessonId });
                 
-                const res = await axios.post('/api/course/lesson/generate', body, config);
+                const res = await api.post('/course/lesson/generate', body, config);
                 
                 const updatedLesson = res.data;
                 const wasCompletedBefore = currentLessonFromParent?.isCompleted || false;
@@ -261,7 +261,7 @@ const LessonContentPage = () => {
         try {
             const config = { headers: { 'Content-Type': 'application/json', 'x-auth-token': token }};
             const body = JSON.stringify({ courseId, subtopicId, lessonId });
-            const res = await axios.post('/api/course/lesson/change-video', body, config);
+            const res = await api.post('/course/lesson/change-video', body, config);
             
             const updatedLesson = res.data;
             setLesson(updatedLesson);

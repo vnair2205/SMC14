@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
+import api from '../../services/api';
 import { QRCodeSVG } from 'qrcode.react';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
@@ -174,8 +174,8 @@ const CertificatePage = () => {
             try {
                 // Fetch course and user data in parallel for efficiency
                 const [courseRes, userRes] = await Promise.all([
-                    axios.get(`/api/course/${courseId}`, config),
-                    axios.get('/api/dashboard', config) // Your existing endpoint for user data
+                    api.get(`/course/${courseId}`, config),
+                    api.get('/dashboard', config) // Your existing endpoint for user data
                 ]);
 
                 const fetchedUser = userRes.data.user;
@@ -185,8 +185,8 @@ const CertificatePage = () => {
                 // --- DEFINITIVE FIX ---
                 // 1. Check that we actually got a user object with an ID
                 if (fetchedUser && fetchedUser._id) {
-                    // 2. Get the base URL from the .env file, with a fallback
-                    const baseUrl = process.env.REACT_APP_BASE_URL || 'http://localhost:3000';
+                    // 2. Get the base URL from the .env file
+                    const baseUrl = process.env.REACT_APP_BASE_URL;
                     // 3. Set the complete and correct URL in the state
                     setVerificationUrl(`${baseUrl}/verify/${courseId}/${fetchedUser._id}`);
                 }

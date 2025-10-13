@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
+import api from '../services/api';
 import logo from '../assets/seekmycourse_logo.png';
 import Preloader from '../components/common/Preloader';
 import paymentService from '../services/paymentService';
@@ -201,7 +201,7 @@ const VerifyEmailPage = () => {
         setNotification({ type: '', text: '' });
         try {
             // --- FIX: Capture the response from the server ---
-            const res = await axios.post('/api/auth/verify-signup-email', { email: currentEmail, otp });
+            const res = await api.post('/auth/verify-signup-email', { email: currentEmail, otp });
             
             // --- FIX: Extract the token and pass it to handlePayment ---
             const token = res.data.token;
@@ -224,7 +224,7 @@ const VerifyEmailPage = () => {
         setIsLoading(true);
         setNotification({ type: '', text: '' });
         try {
-            await axios.post('/api/auth/resend-signup-email-otp', { email: currentEmail });
+            await api.post('/auth/resend-signup-email-otp', { email: currentEmail });
             setNotification({ type: 'success', text: t('otp_resent_success') });
             setTimer(60);
             setCanResend(false);

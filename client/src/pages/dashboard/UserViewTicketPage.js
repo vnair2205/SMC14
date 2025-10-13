@@ -135,7 +135,7 @@ const UserViewTicketPage = () => {
                     {ticket.attachments?.length > 0 && (
                         <div>
                             {ticket.attachments.map((att, idx) => (
-                                <AttachmentLink href={`http://localhost:5000/${att.filePath}`} target="_blank" rel="noopener noreferrer" key={idx}><FiPaperclip /> {att.fileName}</AttachmentLink>
+                                <AttachmentLink href={`${process.env.REACT_APP_BASE_URL}/${att.filePath}`} target="_blank" rel="noopener noreferrer" key={idx}><FiPaperclip /> {att.fileName}</AttachmentLink>
                             ))}
                         </div>
                     )}
@@ -152,7 +152,7 @@ const UserViewTicketPage = () => {
                         {reply.attachments?.length > 0 && (
                             <div>
                                 {reply.attachments.map((att, idx) => (
-                                    <AttachmentLink href={`http://localhost:5000/${att.filePath}`} target="_blank" rel="noopener noreferrer" key={idx}><FiPaperclip /> {att.fileName}</AttachmentLink>
+                                    <AttachmentLink href={`${process.env.REACT_APP_BASE_URL}/${att.filePath}`} target="_blank" rel="noopener noreferrer" key={idx}><FiPaperclip /> {att.fileName}</AttachmentLink>
                                 ))}
                             </div>
                         )}
