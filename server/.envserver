@@ -1,0 +1,57 @@
+# Author: Vishnu Nair
+# Designation: Founder & CEO
+# Organization: SeekMyCourse AI Technologies Pvt Ltd
+# Version: 1.1.12
+# Description: Environment variables for the SeekMYCOURSE backend.
+
+
+PORT=5000
+
+
+# MongoDB Connection URI (replace with your actual connection string)
+MONGO_URI=mongodb+srv://seekmycourse_user:Seekmycourse2205@cluster0.zcvv2x9.mongodb.net/
+
+# JSON Web Token Secret Key
+JWT_SECRET=SeekMYCOURSE_SMCWEB_v1112_011320251223_AM_@22051990@TanisiNair_220820220
+
+JWT_ADMIN_SECRET=SeekMYCOURSE_SMCWEB_v1112_011320251223_AM_@22051990@TanisiNair_220820220
+
+
+
+# Email SMTP Credentials (G Suite)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=no-reply@seekmycourse.com
+SMTP_PASS=qaex fjxn urdd obdr
+
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=no-reply@seekmycourse.com
+EMAIL_PASS=qaex fjxn urdd obdr
+
+# Razorpay Credentials
+RAZORPAY_KEY_ID=rzp_live_RHkAYlq4FsI5Jh
+RAZORPAY_KEY_SECRET=yMWnrUqcsydjTyK0teGck1yM
+
+
+
+# Google Gemini API Keys (add more separated by commas)
+GEMINI_API_KEYS=AIzaSyBLcNHnDOyKQQ3UEsS_irvnGhwMbwKvgJo,AIzaSyDv7hJwpfVU_Wyz8uAtg1z6zSwOxjUgE9I,AIzaSyATqZ-U_PtiPOlffgUWm7rnK8V96XnOOPk,AIzaSyCZpckdbMAZnkODCGA-DDvsJjFXGD1G6Zs,AIzaSyB7LMIvgkqpUslSbkkY9FqYLUY2GXhZkng,AIzaSyABYoKnt00Pl4z9XuXgKxqcOihpWwJFhDI,AIzaSyA7DXUGMSbdVmg7bEhevDY0ERI-ZpTFf_s,AIzaSyBsnBglDgTj1TIC0nopDD_yyQpZ8jgRxpg,AIzaSyAsl5DPAr1ZtB6iulyOJIFnEAHiHfNSAWY
+
+
+
+# YouTube Data API v3 Keys (add more separated by commas)
+YOUTUBE_API_KEYS=AIzaSyAewiNgxcm8tMcHKuJgC9Bj03bD4sS0IjQ,AIzaSyCub54FwREUO3PAHLa3RxfYVmr4hWyalDs,AIzaSyA0DfBvAIbwqcI3TIKWrquCuLBxFSUo3Vw,AIzaSyDsmIYtlyl_O4ExIzGbK8FS25PNxGeDXkI,AIzaSyBgYBNR6Cfapv32AypI3sDFr5gorH4Rlvw,AIzaSyD-EKolwmvplvCXZ5VB6nlzfv6xZ5FylTQ,AIzaSyAHapX5YBiGHeeb3rGtXKvmycGsVa4rTyc,AIzaSyCvShEm8_mmkpCzeI49_g9Rs5_OVZ9LbZg,AIzaSyBLbBOeY_Pre8LrINPUnBJZNNEzeSGSaU8
+
+PEXELS_API_KEYS=523JhVpQeqeejuB93qwqHonJMLRiAMCTogV8vsuDQ8FYzaKfA29GF2C4,gqRohNjwTfC5kyO9ezxWfGwDiT6mehfqzyi4dTjt7MTTdf3qmXTKVMqP,yPV5z26lnPEKm0UHVjUziqcAffCe8SrhUImVFk1QIN2zcaqmNpdFEhyU
+
+
+TWILIO_ACCOUNT_SID=ACdf0e35829c618c055583b001b54c5168
+TWILIO_AUTH_TOKEN=1ae40fca8bb32de289b64aafd81391d1
+TWILIO_MESSAGING_SERVICE_SID=VAeed765b8e088f25623f2f3e29c55d810
+
+
+# Deployment URLs
+CLIENT_URL=http://localhost:3000
+ADMIN_URL=http://localhost:3001
+SERVER_URL=http://localhost:5000
