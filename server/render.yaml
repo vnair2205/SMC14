@@ -1,0 +1,28 @@
+services:
+  - type: web # Or worker
+    name: your-service-name # Make sure this matches your service
+    env: node
+    # ... other settings (buildCommand, startCommand) ...
+    envVars:
+      - key: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+        value: true
+      - key: PUPPETEER_EXECUTABLE_PATH
+        value: /usr/bin/google-chrome-stable
+      - key: NODE_ENV # Recommended for production
+        value: production
+    packages: # Add this section to install Chrome and dependencies
+      - name: google-chrome-stable
+      - name: libx11-xcb1
+      - name: libxcomposite1
+      - name: libxdamage1
+      - name: libxi6
+      - name: libxtst6
+      - name: libnss3
+      - name: libcups2
+      - name: libxss1
+      - name: libxrandr2
+      - name: libasound2
+      - name: libatk1.0-0
+      - name: libatk-bridge2.0-0
+      - name: libpangocairo-1.0-0
+      - name: libgtk-3-0
